@@ -55,7 +55,7 @@ export default function LoginPage() {
             </a>
           </div>
           <div className="text-xs text-gray-400 mt-4 text-center">
-            By clicking 'Continue', you acknowledge that you have read and
+            By clicking &apos;Continue&apos;, you acknowledge that you have read and
             accept the{" "}
             <a href="#" className="underline text-[#635BFF]">
               Terms of Service

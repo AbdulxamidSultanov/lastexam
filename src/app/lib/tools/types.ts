@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface User {
   age: number;
   email: string;
@@ -28,13 +30,13 @@ export interface UserResponse {
   email: string;
 }
 
-export interface jobsType {}
+export type jobsType = object;
 
 export interface fakeJobs {
   id: number;
   category: string;
   info: string;
-  image: any;
+  image: StaticImageData | string;
   width: number;
   height: number;
 }

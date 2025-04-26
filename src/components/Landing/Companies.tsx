@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import {
   amdLogo,
@@ -12,10 +13,9 @@ import {
   vodafoneLogo,
   vodafoneLogoLight,
 } from "../../../public";
-import { useSelector } from "react-redux";
 
 const Companies = () => {
-  const { theme } = useSelector((state: any) => state.job);
+  const { theme } = useTheme();
   return (
     <div className="flex flex-col gap-8 py-12">
       <div>

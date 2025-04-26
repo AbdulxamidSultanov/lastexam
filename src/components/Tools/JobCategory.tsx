@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 const JobCategory = ({
@@ -8,7 +8,7 @@ const JobCategory = ({
   w,
   h,
 }: {
-  img: any;
+  img: StaticImageData | string;
   desc: string;
   title: string;
   w: number;

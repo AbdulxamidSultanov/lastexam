@@ -9,27 +9,27 @@ export const jobApi = createApi({
   reducerPath: "jobApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseURL }),
   endpoints: (builder) => ({
-    postJob: builder.mutation<any, Job>({
+    postJob: builder.mutation<unknown, Job>({
       query: (jobData) => ({
         url: "api/jobs/",
         method: "post",
         body: jobData,
       }),
     }),
-    putJob: builder.mutation<any, { id: number; jobData: Job }>({
+    putJob: builder.mutation<unknown, { id: number; jobData: Job }>({
       query: ({ id, jobData }) => ({
         url: `api/jobs/${id}`,
         method: "PUT",
         body: jobData,
       }),
     }),
-    deleteJob: builder.mutation<any, string>({
+    deleteJob: builder.mutation<unknown, string>({
       query: (id) => ({
         url: `api/jobs/${id}`,
         method: "DELETE",
       }),
     }),
-    getUsers: builder.query<any, void>({
+    getUsers: builder.query<unknown, void>({
       query: () => "api/users/",
     }),
     postUser: builder.mutation<UserResponse, { name: string; email: string }>({
@@ -49,14 +49,14 @@ export const jobApi = createApi({
         body: userData,
       }),
     }),
-    deleteUser: builder.mutation<any, string>({
+    deleteUser: builder.mutation<unknown, string>({
       query: (id) => ({
         url: `api/users/${id}`,
         method: "DELETE",
       }),
     }),
     login: builder.mutation<
-      any,
+      unknown,
       { username: string; password: string | number }
     >({
       query: ({ username, password }) => ({
@@ -66,7 +66,7 @@ export const jobApi = createApi({
       }),
     }),
     register: builder.mutation<
-      any,
+      unknown,
       { username: string; password: string | number }
     >({
       query: ({ username, password }) => ({
@@ -76,7 +76,7 @@ export const jobApi = createApi({
       }),
     }),
     loginWithToken: builder.mutation<
-      any,
+      unknown,
       { username: string; password: string | number }
     >({
       query: ({ username, password }) => ({
@@ -85,14 +85,14 @@ export const jobApi = createApi({
         body: { username, password },
       }),
     }),
-    refreshToken: builder.mutation<any, { refreshToken: string }>({
+    refreshToken: builder.mutation<unknown, { refreshToken: string }>({
       query: (refreshToken) => ({
         url: "api/token/refresh",
         method: "POST",
         body: { refreshToken },
       }),
     }),
-    getJobs: builder.query<any, jobsType>({
+    getJobs: builder.query<unknown, jobsType>({
       query: () => "api/jobs/",
     }),
   }),
