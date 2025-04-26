@@ -92,7 +92,7 @@ export const jobApi = createApi({
         body: { refreshToken },
       }),
     }),
-    getJobs: builder.query<unknown, jobsType>({
+    getJobs: builder.query<Job[], jobsType>({
       query: () => "api/jobs/",
     }),
   }),

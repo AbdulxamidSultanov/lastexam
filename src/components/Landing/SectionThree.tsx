@@ -5,7 +5,8 @@ import { Job } from "@/app/lib/tools/types";
 import Link from "next/link";
 
 const SectionThree = () => {
-  const { data, isError } = useGetJobsQuery({});
+  const { data, isError } = useGetJobsQuery({}) as { data?: Job[]; isError: boolean };
+
   if (isError) {
     return (
       <div className="text-red-600 text-2xl">
@@ -13,6 +14,7 @@ const SectionThree = () => {
       </div>
     );
   }
+
   return (
     <section className="p-6 flex flex-col gap-12 mt-[72px]">
       <div className="flex justify-between items-center">
