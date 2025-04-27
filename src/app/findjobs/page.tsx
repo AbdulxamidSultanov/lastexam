@@ -1,11 +1,10 @@
 "use client";
 import { useGetJobsQuery } from "@/app/lib/store/api/apiSlice";
 import { Job } from "@/app/lib/tools/types";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
-import { headerLogo, listicon, squareicon } from "../../../public";
 import Header from "@/components/Landing/Header";
+import Image from "next/image";
+import { useState } from "react";
+import { listicon, squareicon } from "../../../public";
 
 export default function FindJobsPage() {
   const { data: jobs, isLoading } = useGetJobsQuery({});
@@ -61,10 +60,9 @@ export default function FindJobsPage() {
 
   return (
     <div className="min-h-screen bg-[#F8F8FD]">
-        <div className="px-10">
-      <Header />
-
-        </div>
+      <div className="px-10">
+        <Header />
+      </div>
       <section className="py-12 px-8 bg-[#F8F8FD]">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
           Find your <span className="text-[#26A4FF]">dream job</span>

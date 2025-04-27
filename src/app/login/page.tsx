@@ -1,15 +1,20 @@
 "use client";
 
-import {
-  useLoginMutation,
-  useLoginWithTokenMutation,
-} from "@/app/lib/store/api/apiSlice";
+import { useLoginMutation } from "@/app/lib/store/api/apiSlice";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { bgMan, grafik, loginLogo, quote } from "../../../public";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { bgMan, grafik, loginLogo, quote } from "../../../public";
 import { changeLoginStatus } from "../lib/store/reducer/jobSlice";
+
+interface LoginResponse {
+  token: string;
+  user: {
+    id: number;
+    username: string;
+  };
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,20 +26,25 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response: any = await login({
+      const response = await login({
         username: fullName,
         password,
-      }).unwrap();
+      }).unwrap() as LoginResponse;
+      
       if (response.token) {
         dispatch(changeLoginStatus(true));
         localStorage.setItem("token", response.token);
         router.push("/");
       } else {
         dispatch(changeLoginStatus(false));
-        localStorage.deleteItem("token");
+        localStorage.removeItem("token");
         router.push("/login/");
       }
-    } catch (err) {}
+    } catch (error) {
+      console.error("Login failed:", error);
+      dispatch(changeLoginStatus(false));
+      localStorage.removeItem("token");
+    }
   };
 
   const handleLogout = () => {

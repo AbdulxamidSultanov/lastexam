@@ -3,13 +3,13 @@ import {
   changeLoginStatus,
   changeTheme,
 } from "@/app/lib/store/reducer/jobSlice";
+import { RootState } from "@/app/lib/store/store";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { headerLogo } from "../../../public";
-import { RootState } from "@/app/lib/store/store";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
