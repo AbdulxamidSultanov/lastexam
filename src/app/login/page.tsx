@@ -47,11 +47,6 @@ export default function LoginPage() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    router.push("/login");
-  };
-
   return (
     <div className="min-h-screen flex ">
       <div className="hidden md:flex flex-col justify-between items-center bg-[#F8F8FD] w-1/2 p-10 relative">
