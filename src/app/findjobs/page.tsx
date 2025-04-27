@@ -3,7 +3,7 @@ import { useGetJobsQuery } from "@/app/lib/store/api/apiSlice";
 import { Job } from "@/app/lib/tools/types";
 import Header from "@/components/Landing/Header";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { listicon, squareicon } from "../../../public";
 
 export default function FindJobsPage() {
@@ -54,7 +54,7 @@ export default function FindJobsPage() {
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setFilteredJobs(jobs);
   }, [jobs]);
 
