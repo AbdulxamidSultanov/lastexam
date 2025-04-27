@@ -4,6 +4,8 @@ export { default as loginLogo } from "./Logo-login.svg";
 export { default as grafik } from "./grafik.png";
 export { default as bgMan } from "./bg-man.png";
 export { default as quote } from "./quote.png";
+export { default as squareicon } from "./squareicon.svg";
+export { default as listicon } from "./listicon.svg";
 
 export { default as amdLogo } from "./LandingPage/Company/amd-logo.svg";
 export { default as intelLogo } from "./LandingPage/Company/intel-logo.svg";

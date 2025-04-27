@@ -16,12 +16,12 @@ const SectionThree = () => {
   }
 
   return (
-    <section className="p-6 flex flex-col gap-12 mt-[72px]">
+    <section className="p-6 flex flex-col gap-12 mt-[72px] ">
       <div className="flex justify-between items-center">
         <h2 className="font-semibold text-5xl/[110%]">
           Featured <span className="text-[#26A4FF]">jobs</span>
         </h2>
-        <Link className="text-[#4640DE]" href={"./"}>
+        <Link className="text-[#4640DE]" href={"/findjobs"}>
           show all jobs
         </Link>
       </div>

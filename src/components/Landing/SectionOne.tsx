@@ -83,7 +83,7 @@ const SectionOne = () => {
     <section className="flex flex-col gap-12 mt-[72px]">
       <div className="flex justify-between items-center">
         <h2 className="font-semibold text-5xl/[110%]">Explore by <span className="text-5xl/[110%] font-semibold text-[#26A4FF]">category</span></h2>
-        <Link className="self-end text-[#4640DE]" href={"./"}>Show all jobs</Link>
+        <Link className="self-end text-[#4640DE]" href={"/findjobs"}>Show all jobs</Link>
       </div>
       <div className="grid grid-cols-4 gap-8">
         {fakeJobs.map((f) => (

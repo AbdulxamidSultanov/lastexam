@@ -1,16 +1,21 @@
 "use client";
-import { changeTheme } from "@/app/lib/store/reducer/jobSlice";
+import {
+  changeLoginStatus,
+  changeTheme,
+} from "@/app/lib/store/reducer/jobSlice";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { headerLogo } from "../../../public";
+import { RootState } from "@/app/lib/store/store";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch();
+  const { isLoged } = useSelector((state: RootState) => state.job);
 
   useEffect(() => {
     setMounted(true);
@@ -19,6 +24,9 @@ const Header = () => {
   if (!mounted) {
     return null;
   }
+  const handleLogout = () => {
+    dispatch(changeLoginStatus(false));
+  };
 
   const toggleTheme = () => {
     if (theme === "light") {
@@ -39,13 +47,13 @@ const Header = () => {
         </div>
         <ul className="flex gap-4 items-center justify-center">
           <li>
-            <Link className="font-medium text-[16px]/[160%]" href="/login">
-              Browse Companies
+            <Link className="font-medium text-[16px]/[160%]" href="/findjobs">
+              Find Jobs
             </Link>
           </li>
           <li>
-            <Link className="font-medium text-[16px]/[160%]" href={"./"}>
-              Find Jobs
+            <Link className="font-medium text-[16px]/[160%]" href="./">
+              Browse Companies
             </Link>
           </li>
         </ul>
@@ -88,13 +96,24 @@ const Header = () => {
             </svg>
           )}
         </button>
-        <Link className="font-medium text-[16px]/[160%]" href="/login">
-          Log in
-        </Link>
-        <div className="border-[0.5px] border-[#D6DDEB] h-12"></div>
-        <button className="font-bold text-[16px]/[160%] px-6 py-3 cursor-pointer text-white bg-[#4640DE]">
-          Sign up
-        </button>
+        {isLoged === true ? (
+          <div>
+            <button onClick={handleLogout}>Log out</button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-8">
+            <Link className="font-medium text-[16px]/[160%]" href="/login">
+              Log in
+            </Link>
+            <div className="border-[0.5px] border-[#D6DDEB] h-12"></div>
+            <Link
+              href="/register"
+              className="font-bold text-[16px]/[160%] px-6 py-3 cursor-pointer text-white bg-[#4640DE]"
+            >
+              Sign up
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
